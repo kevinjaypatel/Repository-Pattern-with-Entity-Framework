@@ -68,6 +68,10 @@ namespace ConsoleClient
                         Menu.clearMenu();
                         listCourses();
                         break;
+                    case 10:
+                        Menu.clearMenu();
+                        listStandards(); 
+                        break; 
                 }
             } while (repeat);
         }
@@ -303,6 +307,19 @@ namespace ConsoleClient
             IList<Course> courses = businessLayer.GetAllCourses();
             foreach (Course course in courses)
                 Console.WriteLine("Course ID: {0}, Name: {1}", course.CourseId, course.CourseName);
+        }
+
+        /// <summary>
+        /// List all standards in the database.
+        /// </summary>
+        public static void listStandards()
+        {
+            IList<Standard> standards = businessLayer.GetAllStandards();
+            foreach (Standard standard in standards)
+            {
+                Console.WriteLine("Standard ID: {0}, Name: {1}", standard.StandardId, standard.StandardName);
+                Console.WriteLine("Description: {0}", standard.Description); 
+            }
         }
     }
 }
